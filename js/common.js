@@ -153,10 +153,10 @@ function buildProfileView( contactId, profileContainerId ) {
                     row = $(this).parent().attr('id').replace('row-', '').split('_');
                     switch (row[0]) {
                       case 'email':
-                        elementValue = '<a href="mailto:">' + $(this).html() + '</a>';
+                        elementValue = '<a href="mailto:' + $(this).html() + '">' + $(this).html() + '</a>';
                         break;
                       case 'phone':
-                        elementValue = '<a href="tel:">' + $(this).html() + '</a>';
+                        elementValue = '<a href="tel:' + $(this).html() + '">' + $(this).html() + '</a>';
                         break;
                       default :
                         elementValue = $(this).html();
