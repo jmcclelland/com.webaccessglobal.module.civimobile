@@ -15,9 +15,11 @@ function buildProfile( profileId, profileContainerId, contactId, dataUrl ) {
     buildProfileForm( profileId, profileContainerId, dataUrl );
   }
   else {
+    console.log("Working on " + contactId);
     CRM.api('Contact','get',{'version' :'3', 'id' : contactId},
       {
         success:function (data){
+          console.log(data);
           var contactInfo = data.values[contactId];
           var jsonProfile = {};
 
