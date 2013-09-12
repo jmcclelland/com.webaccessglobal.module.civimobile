@@ -6,49 +6,9 @@
 <div data-role="popup" id="addContactPopup" data-transition="slidedown">
   <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="a">
     <li data-role="divider" data-theme="a">Contact type:</li>
-    <?php
-      $params = array(
-        'return' => 'id',
-        'name' => 'new_individual',
-      );
-      try {
-        $default_ind_profile_id = civicrm_api3('uf_group', 'getvalue', $params);
-      }
-      catch (CiviCRM_API3_Exception $e) {
-        // What do we do with errors?
-        // Revert to hard coded ids
-        $default_ind_profile_id = 10;
-      }
-
-      $params = array(
-        'return' => 'id',
-        'name' => 'new_organization',
-      );
-      try {
-        $default_org_profile_id= civicrm_api3('uf_group', 'getvalue', $params);
-      }
-      catch (CiviCRM_API3_Exception $e) {
-        $default_org_profile_id = 5; 
-      }
-      $params = array(
-      'return' => 'id',
-      'name' => 'new_household',
-      );
-      try {
-        $default_house_profile_id = civicrm_api3('uf_group', 'getvalue', $params);
-      }
-      catch (CiviCRM_API3_Exception $e) {
-        $default_house_profile_id = 6;
-      }
-      $group = 'CiviCRM Mobile';
-      $ind_profile_id = CRM_Core_BAO_Setting::getItem($group, 'ind_profile_id', NULL, $default_ind_profile_id);
-      $org_profile_id = CRM_Core_BAO_Setting::getItem($group, 'org_profile_id', NULL, $default_org_profile_id);
-      $house_profile_id = CRM_Core_BAO_Setting::getItem($group, 'house_profile_id', NULL, $default_house_profile_id);
-
-    ?>
-    <li><a href="<?php echo CRM_Utils_System::url('civicrm/mobile/contact', "action=add&pid={$ind_profile_id}"); ?>" data-transition="slideup">Individual</a></li>
-    <li><a href="<?php echo CRM_Utils_System::url('civicrm/mobile/contact', "action=add&pid={$org_profile_id}"); ?>" data-transition="slideup">Organization</a></li>
-    <li><a href="<?php echo CRM_Utils_System::url('civicrm/mobile/contact', "action=add&pid={$house_profile_id}"); ?>" data-transition="slideup">Household</a></li>
+    <li><a href="<?php echo CRM_Utils_System::url('civicrm/mobile/contact', 'action=add&pid=' . civimobile::getProfileId('Individual')) ?>" data-transition="slideup">Individual</a></li>
+    <li><a href="<?php echo CRM_Utils_System::url('civicrm/mobile/contact', 'action=add&pid=' . civimobile::getProfileId('Organization')) ?>" data-transition="slideup">Organization</a></li>
+    <li><a href="<?php echo CRM_Utils_System::url('civicrm/mobile/contact', 'action=add&pid=' . civimobile::getProfileId('Household')) ?>" data-transition="slideup">Household</a></li>
   </ul>
 </div>
 <div data-role="content" id="contact-content">
