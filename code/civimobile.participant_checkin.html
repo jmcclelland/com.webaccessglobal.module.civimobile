@@ -74,8 +74,8 @@
     function checkinParticipant(pid,eid) {
       var regDate;
       $.mobile.loading( 'show' );
-      var participant = $('#event-participant-'+pid).parent().parent().parent();
-      if(participant.parent().attr('id')=="registered-participants"){
+      var participant = $('#event-participant-'+pid);
+      if(participant.parent().parent().attr('id')=="registered-participants"){
         var statusId = '2';
         var list = checkedInParticipants;
       }
